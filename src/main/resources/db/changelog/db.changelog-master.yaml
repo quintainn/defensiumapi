@@ -1,7 +1,7 @@
 databaseChangeLog:
   - include:
-      file: db/changelog/a_create_table-tb-perfil.yaml
+      file: db/changelog/aaa_create_table-tb-perfil.yaml
   - include:
-      file: db/changelog/b_create_table-tb-usuario.yaml
+      file: db/changelog/aab_create_table-tb-usuario.yaml
   - include:
-      file: db/changelog/c_create_table-tb-usuario-perfil.yaml
+      file: db/changelog/aac_create_table-tb-usuario-perfil.yaml
