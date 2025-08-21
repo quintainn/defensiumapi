@@ -5,3 +5,5 @@ databaseChangeLog:
       file: db/changelog/aab_create_table-tb-usuario.yaml
   - include:
       file: db/changelog/aac_create_table-tb-usuario-perfil.yaml
+  - include:
+      file: db/changelog/aad_insert_into_table-tb-perfil.yaml
