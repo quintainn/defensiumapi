@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Quintain
+      changes:
+        - createTable:
+            tableName: TB_PERFIL
+            columns:
+              - column:
+                  name: CODE
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: CODE_PUBLIC
+                  type: uuid
+                  defaultValueComputed: gen_random_uuid()
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: DESCRICAO
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ACTIVE
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: DATA_CRIACAO
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: DATA_EDICAO
+                  type: date
+                  constraints:
+                    nullable: true
+              - column:
+                  name: DATA_DELECAO
+                  type: date
+                  constraints:
+                    nullable: true

@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: Quintain
+      changes:
+        - createTable:
+            tableName: TB_USUARIO_PERFIL
+            columns:
+              - column:
+                  name: CODE
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: ID_USUARIO
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ID_PERFIL
+                  type: bigint
+                  constraints:
+                    nullable: false
+
+        - addForeignKeyConstraint:
+            baseTableName: TB_USUARIO_PERFIL
+            baseColumnNames: ID_USUARIO
+            referencedTableName: TB_USUARIO
+            referencedColumnNames: CODE
+            constraintName: FK_USUARIO_PERFIL_USUARIO
+
+        - addForeignKeyConstraint:
+            baseTableName: TB_USUARIO_PERFIL
+            baseColumnNames: ID_PERFIL
+            referencedTableName: TB_PERFIL
+            referencedColumnNames: CODE
+            constraintName: FK_USUARIO_PERFIL_PERFIL
