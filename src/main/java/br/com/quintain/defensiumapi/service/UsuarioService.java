@@ -52,4 +52,9 @@ public class UsuarioService implements UserDetailsService {
 		return usuarioEntityOptional.get();
 	}
 
+	public UsuarioEntity createOne(UsuarioEntity usuarioEntity) {
+		usuarioEntity.setSenha(passwordEncoder.encode(usuarioEntity.getSenha()));
+		return this.usuarioRepository.save(usuarioEntity);
+	}
+
 }

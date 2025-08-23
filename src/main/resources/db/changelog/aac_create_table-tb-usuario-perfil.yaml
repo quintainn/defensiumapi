@@ -1,7 +1,7 @@
 databaseChangeLog:
   - changeSet:
       id: 3
-      author: Quintain
+      author: Desenvolvimento
       changes:
         - createTable:
             tableName: TB_USUARIO_PERFIL

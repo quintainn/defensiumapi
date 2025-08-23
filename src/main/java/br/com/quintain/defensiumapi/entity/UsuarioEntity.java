@@ -3,6 +3,7 @@ package br.com.quintain.defensiumapi.entity;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -27,7 +28,7 @@ public class UsuarioEntity implements UserDetails {
 	private Long code;
 
 	@Column(name = "code_public", updatable = false, nullable = false)
-	private String codePublic;
+	private UUID codePublic;
 
 	@Column(name = "nome", length = 200, nullable = false)
 	private String nome;
@@ -53,10 +54,17 @@ public class UsuarioEntity implements UserDetails {
 	@Column(name = "active", nullable = false)
 	private Boolean active;
 
-	public UsuarioEntity() { }
+	public UsuarioEntity() {
+		this.codePublic = UUID.randomUUID();
+		this.dataCriacao = LocalDateTime.now();
+		this.active = true;
+	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
+		if (this.usuarioPerfilEntityList == null || this.usuarioPerfilEntityList.isEmpty()) {
+			return List.of();
+		}
 		return usuarioPerfilEntityList
 			.stream()
 			.map(UsuarioPerfilEntity::getPerfilEntity)
@@ -83,11 +91,11 @@ public class UsuarioEntity implements UserDetails {
 		this.code = code;
 	}
 
-	public String getCodePublic() {
+	public UUID getCodePublic() {
 		return codePublic;
 	}
 
-	public void setCodePublic(String codePublic) {
+	public void setCodePublic(UUID codePublic) {
 		this.codePublic = codePublic;
 	}
 
