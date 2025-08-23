@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.Column;
@@ -15,7 +16,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "tb_usuario", schema = "public")
@@ -38,9 +38,8 @@ public class UsuarioEntity implements UserDetails {
 	@Column(name = "senha", length = 255, nullable = false)
 	private String senha;
 
-	@Transient
 	@OneToMany(mappedBy = "usuarioEntity", fetch = FetchType.EAGER)
-	private transient List<UsuarioPerfilEntity> usuarioPerfilEntityList;
+	private List<UsuarioPerfilEntity> usuarioPerfilEntityList;
 
 	@Column(name = "data_criacao", updatable = false, nullable = false)
 	private LocalDateTime dataCriacao;
@@ -62,7 +61,7 @@ public class UsuarioEntity implements UserDetails {
 			.stream()
 			.map(UsuarioPerfilEntity::getPerfilEntity)
 			.map(PerfilEntity::getDescricao)
-			.map(descricao -> (GrantedAuthority) () -> descricao)
+			.map(descricao -> new SimpleGrantedAuthority("ROLE_" + descricao.toUpperCase()))
 			.toList();
 	}
 

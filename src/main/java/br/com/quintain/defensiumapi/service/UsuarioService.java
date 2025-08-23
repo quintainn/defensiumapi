@@ -1,6 +1,7 @@
 package br.com.quintain.defensiumapi.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -44,7 +45,11 @@ public class UsuarioService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		throw new UnsupportedOperationException("Unimplemented method 'loadUserByUsername'");
+		Optional<UsuarioEntity> usuarioEntityOptional = usuarioRepository.findByUsuario(username);
+		if (usuarioEntityOptional.isEmpty()) {
+			throw new UsernameNotFoundException("Esse usuário não está registrado no sistema!");
+		}
+		return usuarioEntityOptional.get();
 	}
 
 }
