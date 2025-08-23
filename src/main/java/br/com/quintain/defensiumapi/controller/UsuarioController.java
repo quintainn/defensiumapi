@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.quintain.defensiumapi.entity.PerfilEntity;
 import br.com.quintain.defensiumapi.entity.UsuarioEntity;
 import br.com.quintain.defensiumapi.service.UsuarioService;
-import br.com.quintain.defensiumapi.transfer.UsuarioTransfer;
+import br.com.quintain.defensiumapi.transfer.UsuarioRequestTransfer;
+import br.com.quintain.defensiumapi.transfer.UsuarioResponseTransfer;
 
 @RestController
 @RequestMapping("/defensium/usuario")
@@ -36,7 +37,7 @@ public class UsuarioController {
 	}
 
 	@PostMapping
-	public ResponseEntity<UsuarioTransfer> createOne(@RequestBody UsuarioTransfer usuarioTransfer) {
+	public ResponseEntity<UsuarioResponseTransfer> createOne(@RequestBody UsuarioRequestTransfer usuarioTransfer) {
 		return ResponseEntity.ok().body(this.usuarioService.createOne(usuarioTransfer));
 	}
 

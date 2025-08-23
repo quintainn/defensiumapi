@@ -3,7 +3,8 @@ package br.com.quintain.defensiumapi.mapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import br.com.quintain.defensiumapi.entity.UsuarioEntity;
-import br.com.quintain.defensiumapi.transfer.UsuarioTransfer;
+import br.com.quintain.defensiumapi.transfer.UsuarioRequestTransfer;
+import br.com.quintain.defensiumapi.transfer.UsuarioResponseTransfer;
 
 public class UsuarioMapper {
 
@@ -13,7 +14,7 @@ public class UsuarioMapper {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public UsuarioEntity toEntity(UsuarioTransfer usuarioTransfer) {
+    public UsuarioEntity toEntity(UsuarioRequestTransfer usuarioTransfer) {
         UsuarioEntity usuarioEntity = new UsuarioEntity();
             usuarioEntity.setNome(usuarioTransfer.getNome());
             usuarioEntity.setUsuario(usuarioTransfer.getUsuario());
@@ -21,17 +22,22 @@ public class UsuarioMapper {
         return usuarioEntity;
     }
 
-    public static UsuarioTransfer toTransfer(UsuarioEntity usuarioEntity) {
-        UsuarioTransfer usuarioTransfer = new UsuarioTransfer();
-            usuarioTransfer.setCodePublic(usuarioEntity.getCodePublic().toString());
+    public static UsuarioRequestTransfer toTransfer(UsuarioEntity usuarioEntity) {
+        UsuarioRequestTransfer usuarioTransfer = new UsuarioRequestTransfer();
             usuarioTransfer.setNome(usuarioEntity.getNome());
             usuarioTransfer.setUsuario(usuarioEntity.getUsuario());
             usuarioTransfer.setSenha(usuarioEntity.getSenha());
-            usuarioTransfer.setDataCriacao(String.valueOf(usuarioEntity.getDataCriacao()));
-            usuarioTransfer.setDataEdicao(String.valueOf(usuarioEntity.getDataEdicao()));
-            usuarioTransfer.setDataDelecao(String.valueOf(usuarioEntity.getDataDelecao()));
-            usuarioTransfer.setActive(String.valueOf(usuarioEntity.getActive()));
         return usuarioTransfer;
+    }
+
+    public static UsuarioResponseTransfer toTransferResponse(UsuarioEntity usuarioEntity) {
+        UsuarioResponseTransfer usuarioResponseTransfer = new UsuarioResponseTransfer();
+            usuarioResponseTransfer.setCodePublic(String.valueOf(usuarioEntity.getCodePublic()));
+            usuarioResponseTransfer.setNome(usuarioEntity.getNome());
+            usuarioResponseTransfer.setUsuario(usuarioEntity.getUsuario());
+            usuarioResponseTransfer.setDataCriacao(usuarioEntity.getDataCriacao().toString());
+            usuarioResponseTransfer.setActive(String.valueOf(usuarioEntity.getActive()));
+        return usuarioResponseTransfer;
     }
 
 }

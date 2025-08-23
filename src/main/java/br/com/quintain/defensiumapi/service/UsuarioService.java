@@ -16,7 +16,8 @@ import br.com.quintain.defensiumapi.mapper.UsuarioMapper;
 import br.com.quintain.defensiumapi.repository.PerfilRepository;
 import br.com.quintain.defensiumapi.repository.UsuarioPerfilRepository;
 import br.com.quintain.defensiumapi.repository.UsuarioRepository;
-import br.com.quintain.defensiumapi.transfer.UsuarioTransfer;
+import br.com.quintain.defensiumapi.transfer.UsuarioRequestTransfer;
+import br.com.quintain.defensiumapi.transfer.UsuarioResponseTransfer;
 
 @Service
 public class UsuarioService implements UserDetailsService {
@@ -59,12 +60,12 @@ public class UsuarioService implements UserDetailsService {
 		return usuarioEntityOptional.get();
 	}
 
-	public UsuarioTransfer createOne(UsuarioTransfer usuarioTransfer) {
+	public UsuarioResponseTransfer createOne(UsuarioRequestTransfer usuarioTransfer) {
 		UsuarioMapper usuarioMapper = new UsuarioMapper(passwordEncoder);
 		UsuarioEntity usuarioEntity = usuarioMapper.toEntity(usuarioTransfer);
 		UsuarioEntity usuarioEntityDatabase = this.usuarioRepository.save(usuarioEntity);
 		this.cadastrarPerfilUsuario(usuarioEntity);
-		return UsuarioMapper.toTransfer(usuarioEntityDatabase);
+		return UsuarioMapper.toTransferResponse(usuarioEntityDatabase);
 	}
 
 	private void cadastrarPerfilUsuario(UsuarioEntity usuarioEntity) {
