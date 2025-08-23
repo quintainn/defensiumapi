@@ -1,0 +1,28 @@
+meta {
+  name: Autenticar Usuário
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8081/defensium/autenticar
+  body: none
+  auth: basic
+}
+
+auth:basic {
+  username: priscila.mariano@quintain.com.br
+  password: senha-forte
+}
+
+body:json {
+  {
+    "Username":"",
+    "Password":"senha-forte"
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}

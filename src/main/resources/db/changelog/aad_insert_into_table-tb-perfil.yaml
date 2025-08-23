@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: 4
+      author: Quintain
+      changes:
+        - insert:
+            tableName: TB_PERFIL
+            columns:
+              - column:
+                  name: DESCRICAO
+                  value: "Administrador"
+        - insert:
+            tableName: TB_PERFIL
+            columns:
+              - column:
+                  name: DESCRICAO
+                  value: "Usuário"
