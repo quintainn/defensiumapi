@@ -9,6 +9,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -39,6 +41,7 @@ public class UsuarioEntity implements UserDetails {
 	@Column(name = "senha", length = 255, nullable = false)
 	private String senha;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "usuarioEntity", fetch = FetchType.EAGER)
 	private List<UsuarioPerfilEntity> usuarioPerfilEntityList;
 
