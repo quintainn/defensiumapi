@@ -12,9 +12,11 @@ import org.springframework.stereotype.Service;
 import br.com.quintain.defensiumapi.entity.PerfilEntity;
 import br.com.quintain.defensiumapi.entity.UsuarioEntity;
 import br.com.quintain.defensiumapi.entity.UsuarioPerfilEntity;
+import br.com.quintain.defensiumapi.mapper.UsuarioMapper;
 import br.com.quintain.defensiumapi.repository.PerfilRepository;
 import br.com.quintain.defensiumapi.repository.UsuarioPerfilRepository;
 import br.com.quintain.defensiumapi.repository.UsuarioRepository;
+import br.com.quintain.defensiumapi.transfer.UsuarioTransfer;
 
 @Service
 public class UsuarioService implements UserDetailsService {
@@ -57,11 +59,12 @@ public class UsuarioService implements UserDetailsService {
 		return usuarioEntityOptional.get();
 	}
 
-	public UsuarioEntity createOne(UsuarioEntity usuarioEntity) {
-		usuarioEntity.setSenha(passwordEncoder.encode(usuarioEntity.getSenha()));
-		this.usuarioRepository.save(usuarioEntity);
+	public UsuarioTransfer createOne(UsuarioTransfer usuarioTransfer) {
+		UsuarioMapper usuarioMapper = new UsuarioMapper(passwordEncoder);
+		UsuarioEntity usuarioEntity = usuarioMapper.toEntity(usuarioTransfer);
+		UsuarioEntity usuarioEntityDatabase = this.usuarioRepository.save(usuarioEntity);
 		this.cadastrarPerfilUsuario(usuarioEntity);
-		return usuarioEntity;
+		return UsuarioMapper.toTransfer(usuarioEntityDatabase);
 	}
 
 	private void cadastrarPerfilUsuario(UsuarioEntity usuarioEntity) {
