@@ -38,12 +38,12 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: DATA_EDICAO
-                  type: date
+                  type: timestamp
                   constraints:
                     nullable: true
               - column:
                   name: DATA_DELECAO
-                  type: date
+                  type: timestamp
                   constraints:
                     nullable: true
               - column:

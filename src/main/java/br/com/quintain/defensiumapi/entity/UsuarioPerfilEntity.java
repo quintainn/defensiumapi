@@ -1,6 +1,7 @@
 package br.com.quintain.defensiumapi.entity;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,7 +22,7 @@ public class UsuarioPerfilEntity {
 	private Long code;
 
 	@Column(name = "code_public", unique = true, updatable = false, nullable = false)
-	private String codePublic;
+	private UUID codePublic;
 
 	@ManyToOne
 	@JoinColumn(name = "id_usuario", nullable = false)
@@ -43,7 +44,11 @@ public class UsuarioPerfilEntity {
 	@Column(name = "active", nullable = false)
 	private Boolean active;
 
-	public UsuarioPerfilEntity() { }
+	public UsuarioPerfilEntity() {
+		this.codePublic = java.util.UUID.randomUUID();
+		this.dataCriacao = LocalDateTime.now();
+		this.active = true;
+	}
 
 	public Long getCode() {
 		return code;
@@ -53,11 +58,11 @@ public class UsuarioPerfilEntity {
 		this.code = code;
 	}
 
-	public String getCodePublic() {
+	public UUID getCodePublic() {
 		return codePublic;
 	}
 
-	public void setCodePublic(String codePublic) {
+	public void setCodePublic(UUID codePublic) {
 		this.codePublic = codePublic;
 	}
 
