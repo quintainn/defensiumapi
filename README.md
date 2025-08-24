@@ -7,8 +7,9 @@
 ---
 
 ## Resumo
-Este release traz a primeira versão dos serviços de cadastro de usuários e tratamento centralizado de erros da API Defensium.  
-O objetivo é garantir consistência na criação de novos usuários e respostas padronizadas em caso de falhas.
+
+- Este release traz a primeira versão dos serviços de cadastro de usuários e tratamento centralizado de erros da API Defensium.  
+- O objetivo é garantir consistência na criação de novos usuários e respostas padronizadas em caso de falhas.
 
 ---
 
