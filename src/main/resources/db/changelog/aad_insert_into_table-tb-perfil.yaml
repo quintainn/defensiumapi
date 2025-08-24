@@ -1,7 +1,7 @@
 databaseChangeLog:
   - changeSet:
       id: 4
-      author: Quintain
+      author: Desenvolvimento
       changes:
         - insert:
             tableName: TB_PERFIL
@@ -15,3 +15,9 @@ databaseChangeLog:
               - column:
                   name: DESCRICAO
                   value: "Usuário"
+        - insert:
+            tableName: TB_PERFIL
+            columns:
+              - column:
+                  name: DESCRICAO
+                  value: "Sistema"

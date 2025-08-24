@@ -7,7 +7,12 @@ meta {
 get {
   url: http://localhost:8081/defensium/perfil
   body: none
-  auth: bearer
+  auth: basic
+}
+
+auth:basic {
+  username: defensium.desenvolvimento
+  password: defensium
 }
 
 settings {

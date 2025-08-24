@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: 5
+      author: Desenvolvimento
+      changes:
+        - insert:
+            tableName: TB_USUARIO
+            columns:
+              - column:
+                  name: NOME
+                  value: "Defensium"
+              - column:
+                  name: USUARIO
+                  value: "defensium.desenvolvimento"
+              - column:
+                  name: SENHA
+                  value: "$2a$12$GVxDp.zsEhKOy0ONIyK/d.GyKvvnupaEUzi6qabG4nQRUU6dHs/82" # defensium
+              - column:
+                  name: ACTIVE
+                  valueBoolean: true

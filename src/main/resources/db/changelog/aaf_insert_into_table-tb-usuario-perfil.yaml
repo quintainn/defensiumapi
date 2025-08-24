@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: 6
+      author: Desenvolvimento
+      changes:
+        - insert:
+            tableName: TB_USUARIO_PERFIL
+            columns:
+              - column:
+                  name: ID_USUARIO
+                  valueNumeric: 1
+              - column:
+                  name: ID_PERFIL
+                  valueNumeric: 1
+              - column:
+                  name: ACTIVE
+                  valueBoolean: true
+        - insert:
+            tableName: TB_USUARIO_PERFIL
+            columns:
+              - column:
+                  name: ID_USUARIO
+                  valueNumeric: 1
+              - column:
+                  name: ID_PERFIL
+                  valueNumeric: 3
+              - column:
+                  name: ACTIVE
+                  valueBoolean: true
