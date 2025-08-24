@@ -1,14 +1,15 @@
 # DEFENSIUM v1.0.0.0
 
-**Data de Entrega:** 25/08/2025  
-**Projeto:** DEFENSIUMAPI  
-**Versão:** [v1.0.0.0](https://github.com/quintainn/defensiumapi/issues?q=state%3Aopen%20label%3A%22Version%20v1.0.0.0%22) 
+|Entrega|Versão|
+|--|--|
+|25/08/2025| [v1.0.0.0](https://github.com/quintainn/defensiumapi/issues?q=state%3Aopen%20label%3A%22Version%20v1.0.0.0%22)|
 
 ---
 
 ## Resumo
-Este release traz a primeira versão dos serviços de cadastro de usuários e tratamento centralizado de erros da API Defensium.  
-O objetivo é garantir consistência na criação de novos usuários e respostas padronizadas em caso de falhas.
+
+- Este release traz a primeira versão dos serviços de cadastro de usuários e tratamento centralizado de erros da API Defensium.  
+- O objetivo é garantir consistência na criação de novos usuários e respostas padronizadas em caso de falhas.
 
 ---
 
