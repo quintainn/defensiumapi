@@ -1,8 +1,8 @@
 # DEFENSIUM v1.0.0.0
 
-**Data de Entrega:** 25/08/2025  
-**Projeto:** DEFENSIUMAPI  
-**Versão:** [v1.0.0.0](https://github.com/quintainn/defensiumapi/issues?q=state%3Aclosed%20label%3A%22Version%20v1.0.0.0%22) 
+|Entrega|Versão|
+|--|--|
+|25/08/2025| [v1.0.0.0](https://github.com/quintainn/defensiumapi/issues?q=state%3Aopen%20label%3A%22Version%20v1.0.0.0%22)|
 
 ---
 
