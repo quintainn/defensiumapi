@@ -13,6 +13,13 @@
 
 ---
 
+## Branches
+
+- [DEFENSIUM20250823111844API](https://github.com/quintainn/defensiumapi/issues/2)
+- [DEFENSIUM20250823182834API](https://github.com/quintainn/defensiumapi/issues/4)
+
+---
+
 ## Novas Funcionalidades
 
 - **Cadastro de Usuário [# DEFENSIUM20250823111844API](https://github.com/quintainn/defensiumapi/issues/2)**  
@@ -38,8 +45,8 @@
 
 ## Correções
 
-- Criação de objetos distintos para cada fluxo de dados [DEFENSIUM20250823182834API](https://github.com/quintainn/defensiumapi/issues/4).  
-- Correção de defeito de referência cíclica [DEFENSIUM20250823111844API](https://github.com/quintainn/defensiumapi/issues/2).  
+- [Criação de objetos distintos para cada fluxo de dados](https://github.com/quintainn/defensiumapi/issues/4).  
+- [Correção de defeito de referência cíclica](https://github.com/quintainn/defensiumapi/issues/2).  
 
 ---
 
