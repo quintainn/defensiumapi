@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>br.com.quintain</groupId>
 	<artifactId>defensiumapi</artifactId>
-	<version>v1.0.0</version>
+	<version>v1.0.0.0</version>
 	<name>defensium-service</name>
 	<description>Sistema Gerenciador de Acessos</description>
 	<url/>
@@ -85,6 +85,12 @@
 	</dependencies>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
