@@ -16,4 +16,4 @@ databaseChangeLog:
             baseColumnNames: ID_SISTEMA
             referencedTableName: TB_SISTEMA
             referencedColumnNames: CODE
-            constraintName: fk_usuario_sistema
+            constraintName: FK_USUARIO_SISTEMA
