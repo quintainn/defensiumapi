@@ -22,9 +22,6 @@ public class SistemaEntity {
 	@Column(name = "code_public", updatable = false, nullable = false)
 	private UUID codePublic;
 
-    @Column(name = "codigo_integracao", unique = true)
-    private String codigoIntegracao;
-
 	@Column(name = "nome", unique = true, nullable = false)
 	private String nome;
 
@@ -63,14 +60,6 @@ public class SistemaEntity {
 
     public void setCodePublic(UUID codePublic) {
         this.codePublic = codePublic;
-    }
-
-    public String getCodigoIntegracao() {
-        return codigoIntegracao;
-    }
-
-    public void setCodigoIntegracao(String codigoIntegracao) {
-        this.codigoIntegracao = codigoIntegracao;
     }
 
     public String getNome() {
