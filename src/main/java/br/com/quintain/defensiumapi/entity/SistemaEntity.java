@@ -1,6 +1,7 @@
 package br.com.quintain.defensiumapi.entity;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,9 +20,9 @@ public class SistemaEntity {
 	private Long code;
 
 	@Column(name = "code_public", updatable = false, nullable = false)
-	private String codePublic;
+	private UUID codePublic;
 
-    @Column(name = "codigo-integracao", unique = true, nullable = false)
+    @Column(name = "codigo_integracao", unique = true)
     private String codigoIntegracao;
 
 	@Column(name = "nome", unique = true, nullable = false)
@@ -42,7 +43,11 @@ public class SistemaEntity {
 	@Column(name = "active", nullable = false)
 	private Boolean active;
 
-    public SistemaEntity() {}
+    public SistemaEntity() {
+        this.codePublic = UUID.randomUUID();
+		this.dataCriacao = LocalDateTime.now();
+		this.active = true;
+    }
 
     public Long getCode() {
         return code;
@@ -52,11 +57,11 @@ public class SistemaEntity {
         this.code = code;
     }
 
-    public String getCodePublic() {
+    public UUID getCodePublic() {
         return codePublic;
     }
 
-    public void setCodePublic(String codePublic) {
+    public void setCodePublic(UUID codePublic) {
         this.codePublic = codePublic;
     }
 

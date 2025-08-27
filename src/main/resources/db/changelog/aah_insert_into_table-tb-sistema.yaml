@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: 8
+      author: Desenvolvimento
+      changes:
+        - insert:
+            tableName: TB_SISTEMA
+            columns:
+              - column:
+                  name: NOME
+                  value: "Defensium"
+              - column:
+                  name: URL
+                  value: "http://www.defensium.com.br"

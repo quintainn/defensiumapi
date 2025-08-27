@@ -1,12 +1,12 @@
 meta {
-  name: Autenticar Usuário
+  name: Recuperar Todos
   type: http
   seq: 1
 }
 
-post {
-  url: http://localhost:8081/defensium/autenticar
-  body: none
+get {
+  url: http://192.168.15.18:8081/defensium/sistema
+  body: json
   auth: basic
 }
 
@@ -17,10 +17,9 @@ auth:basic {
 
 body:json {
   {
-    "Username":"",
-    "Password":"senha-forte"
+    "nome": "Credentium",
+    "url": "http://www.credentium.com.br"
   }
-  
 }
 
 settings {
