@@ -17,6 +17,7 @@
 
 - [DEFENSIUM20250823111844API](https://github.com/quintainn/defensiumapi/issues/2)
 - [DEFENSIUM20250823182834API](https://github.com/quintainn/defensiumapi/issues/4)
+- [DEFENSIUM20250826165335API](https://github.com/quintainn/defensiumapi/tree/feature/DEFENSIUM20250826165335APP)
 
 ---
 
