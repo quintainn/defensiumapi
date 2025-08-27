@@ -6,7 +6,7 @@ public class ExceptionTransfer {
 
     private String erro;
 
-    private Integer situacao;
+    private String situacao;
 
     private String dataHoraRequisicao;
 
@@ -28,11 +28,11 @@ public class ExceptionTransfer {
         this.erro = erro;
     }
 
-    public Integer getSituacao() {
+    public String getSituacao() {
         return situacao;
     }
 
-    public void setSituacao(Integer situacao) {
+    public void setSituacao(String situacao) {
         this.situacao = situacao;
     }
 

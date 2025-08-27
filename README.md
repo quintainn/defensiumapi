@@ -61,3 +61,22 @@ curl -X POST http://localhost:8081/defensium/usuario \
            "senha": "senha-forte",
          }'
 ```
+
+## Versionamento
+
+```mermaid
+gitGraph
+   commit tag: "v1.0.0.0"
+   branch feature/DEFENSIUM20250820190211API
+   checkout feature/DEFENSIUM20250820190211API
+   commit id: "Gerar branch de release"
+   branch release/DEFENSIUM20250820190211API
+   checkout release/DEFENSIUM20250820190211API
+   commit id: "Deploy Ambiente de Teste"
+   commit id: "Deploy Ambiente de Homologação"
+   checkout main
+   merge release/DEFENSIUM20250820190211API
+   commit id: "Versão em produção" tag: "v1.0.0.1"
+   checkout feature/DEFENSIUM20250820190211API 
+   commit id: "Encerrada"
+```
