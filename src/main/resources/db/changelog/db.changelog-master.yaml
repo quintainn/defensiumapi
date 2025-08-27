@@ -15,3 +15,7 @@ databaseChangeLog:
       file: db/changelog/aag_create_table-tb-sistema.yaml
   - include:
       file: db/changelog/aah_insert_into_table-tb-sistema.yaml
+  - include:
+      file: db/changelog/aai_alter_table-tb-usuario_add_column.yaml
+  - include:
+      file: db/changelog/aaj_alter_table-tb-usuario_insert.yaml
