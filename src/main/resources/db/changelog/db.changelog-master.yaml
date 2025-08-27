@@ -11,3 +11,5 @@ databaseChangeLog:
       file: db/changelog/aae_insert_into_table-tb-usuario.yaml
   - include:
       file: db/changelog/aaf_insert_into_table-tb-usuario-perfil.yaml
+  - include:
+      file: db/changelog/aag_create_table-tb-sistema.yaml
