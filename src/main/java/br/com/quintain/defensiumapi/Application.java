@@ -46,6 +46,7 @@ public class Application implements CommandLineRunner {
 		Map<String, String> informacao = new LinkedHashMap<>();
 			informacao.put("Código", DataHoraUtility.obterNumeroInstancia());
 			informacao.put("Sistema", sistema);
+			informacao.put("URL", "http://api.defensium.com.br/defensium");
 			informacao.put("Endereço", endereco);
 			informacao.put("Porta", numeroPorta);
 			informacao.put("Version", versao);
