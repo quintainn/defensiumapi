@@ -64,7 +64,7 @@ public class UsuarioService implements UserDetailsService {
 		return usuarioEntityOptional.get();
 	}
 
-	public UsuarioResponseTransfer createOne(UsuarioRequestTransfer usuarioTransfer) {
+	public UsuarioResponseTransfer cadastrarUsuarioSistema(UsuarioRequestTransfer usuarioTransfer) {
 		UsuarioEntity usuarioEntity = usuarioMapper.toEntity(usuarioTransfer);
 		UsuarioEntity usuarioEntityDatabase = this.usuarioRepository.save(usuarioEntity);
 		this.cadastrarPerfilUsuario(usuarioEntity);
@@ -78,6 +78,10 @@ public class UsuarioService implements UserDetailsService {
 				usuarioPerfilEntity.setPerfilEntity(perfil);
 			this.usuarioPerfilRepository.save(usuarioPerfilEntity);
 		});
+	}
+
+	public UsuarioResponseTransfer cadastrarUsuarioComum(UsuarioRequestTransfer usuarioTransfer) {
+		return this.cadastrarUsuarioSistema(usuarioTransfer);
 	}
 
 }

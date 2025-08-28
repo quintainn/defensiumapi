@@ -3,6 +3,8 @@ package br.com.quintain.defensiumapi.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.quintain.defensiumapi.entity.PerfilEntity;
+import br.com.quintain.defensiumapi.entity.SistemaEntity;
 import br.com.quintain.defensiumapi.entity.UsuarioEntity;
 import br.com.quintain.defensiumapi.service.UsuarioService;
 import br.com.quintain.defensiumapi.transfer.UsuarioRequestTransfer;
@@ -36,9 +39,15 @@ public class UsuarioController {
 		return this.usuarioService.recuperarPerfilUsuario(code);
 	}
 
-	@PostMapping
-	public ResponseEntity<UsuarioResponseTransfer> createOne(@RequestBody UsuarioRequestTransfer usuarioTransfer) {
-		return ResponseEntity.ok().body(this.usuarioService.createOne(usuarioTransfer));
+	@PostMapping("/sistema")
+	public ResponseEntity<UsuarioResponseTransfer> cadastrarUsuarioSistema(@RequestBody UsuarioRequestTransfer usuarioTransfer) {
+		return ResponseEntity.ok().body(this.usuarioService.cadastrarUsuarioSistema(usuarioTransfer));
+	}
+
+	@PostMapping("/comum")
+	public ResponseEntity<UsuarioResponseTransfer> cadastrarUsuarioComum(@RequestBody UsuarioRequestTransfer usuarioRequestTransfer, @AuthenticationPrincipal Jwt jwt) {
+		usuarioRequestTransfer.setSistemaEntity(new SistemaEntity(jwt.getClaim("sistemaID")));
+		return ResponseEntity.ok().body(this.usuarioService.cadastrarUsuarioComum(usuarioRequestTransfer));
 	}
 
 }

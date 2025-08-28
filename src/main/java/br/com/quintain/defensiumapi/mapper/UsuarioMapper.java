@@ -51,7 +51,7 @@ public class UsuarioMapper {
 
     private String getSistemaEntity(Long sistemaID) {
         return this.sistemaRepository.findById(sistemaID)
-            .map(SistemaEntity::getNome).orElse("Sistema não pode ser encontrado!");
+            .map(SistemaEntity::getNome).orElse("O sistema informado não existe na nossa base de dados!");
     }
 
 }

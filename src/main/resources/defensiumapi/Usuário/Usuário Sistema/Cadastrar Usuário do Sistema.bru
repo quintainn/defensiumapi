@@ -1,11 +1,11 @@
 meta {
-  name: Cadastrar Sistema
+  name: Cadastrar Usuário do Sistema
   type: http
   seq: 1
 }
 
 post {
-  url: http://192.168.1.9:8081/defensium/sistema
+  url: http://192.168.1.9:8081/defensium/usuario/sistema
   body: json
   auth: basic
 }
@@ -18,7 +18,11 @@ auth:basic {
 body:json {
   {
     "nome": "Credentium",
-    "url": "http://www.credentium.com.br"
+    "sistemaEntity": {
+      "code": 2
+    },
+    "usuario": "credentium.desenvolvimento",
+    "senha": "credentium"
   }
 }
 

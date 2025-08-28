@@ -46,6 +46,10 @@ public class SistemaEntity {
 		this.active = true;
     }
 
+    public SistemaEntity(Long code) {
+        this.code = code;
+    }
+
     public Long getCode() {
         return code;
     }

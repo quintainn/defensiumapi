@@ -10,6 +10,8 @@ import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
 import org.springframework.stereotype.Service;
 
+import br.com.quintain.defensiumapi.entity.UsuarioEntity;
+
 @Service
 public class JsonWebTokenService {
 
@@ -23,6 +25,7 @@ public class JsonWebTokenService {
         Instant agora = Instant.now();
         long tempoExpiracao = 3600L;
         String scopo = authentication.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.joining(" "));
+        UsuarioEntity usuarioEntity = (UsuarioEntity) authentication.getPrincipal();
         JwtClaimsSet jwtClaimsSet = JwtClaimsSet
             .builder()
             .issuer("defensium-service")
@@ -30,6 +33,7 @@ public class JsonWebTokenService {
             .expiresAt(agora.plusSeconds(tempoExpiracao))
             .subject(scopo)
             .claim("scope", scopo)
+            .claim("sistemaID", usuarioEntity.getSistemaEntity().getCode())
             .build();
         return jwtEncoder.encode(JwtEncoderParameters.from(jwtClaimsSet)).getTokenValue();
     }
