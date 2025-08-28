@@ -17,6 +17,8 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -31,6 +33,10 @@ public class UsuarioEntity implements UserDetails {
 
 	@Column(name = "code_public", updatable = false, nullable = false)
 	private UUID codePublic;
+
+	@ManyToOne
+	@JoinColumn(name = "id_sistema", nullable = false)
+	private SistemaEntity sistemaEntity;
 
 	@Column(name = "nome", length = 200, nullable = false)
 	private String nome;
@@ -164,6 +170,14 @@ public class UsuarioEntity implements UserDetails {
 
 	public void setActive(Boolean active) {
 		this.active = active;
+	}
+
+	public SistemaEntity getSistemaEntity() {
+		return sistemaEntity;
+	}
+
+	public void setSistemaEntity(SistemaEntity sistemaEntity) {
+		this.sistemaEntity = sistemaEntity;
 	}
 
 }

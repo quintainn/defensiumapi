@@ -22,7 +22,7 @@ import br.com.quintain.defensiumapi.transfer.UsuarioResponseTransfer;
 @Service
 public class UsuarioService implements UserDetailsService {
 
-	private UsuarioRepository usuarioRepository;
+	private final UsuarioRepository usuarioRepository;
 
 	private final UsuarioPerfilRepository usuarioPerfilRepository;
 
@@ -30,13 +30,17 @@ public class UsuarioService implements UserDetailsService {
 
 	private final PerfilRepository perfilRepository;
 
+	private final UsuarioMapper usuarioMapper;
+
 	private static final Long PERFIL_USUARIO_CODE = 2L;
 
-	public UsuarioService(UsuarioRepository usuarioRepository, UsuarioPerfilRepository usuarioPerfilRepository, PasswordEncoder passwordEncoder, PerfilRepository perfilRepository) {
+	public UsuarioService(UsuarioRepository usuarioRepository, UsuarioPerfilRepository usuarioPerfilRepository,
+			PasswordEncoder passwordEncoder, PerfilRepository perfilRepository, UsuarioMapper usuarioMapper) {
 		this.usuarioRepository = usuarioRepository;
 		this.usuarioPerfilRepository = usuarioPerfilRepository;
 		this.passwordEncoder = passwordEncoder;
 		this.perfilRepository = perfilRepository;
+		this.usuarioMapper = usuarioMapper;
 	}
 
 	public List<UsuarioEntity> findAll() {
@@ -61,11 +65,10 @@ public class UsuarioService implements UserDetailsService {
 	}
 
 	public UsuarioResponseTransfer createOne(UsuarioRequestTransfer usuarioTransfer) {
-		UsuarioMapper usuarioMapper = new UsuarioMapper(passwordEncoder);
 		UsuarioEntity usuarioEntity = usuarioMapper.toEntity(usuarioTransfer);
 		UsuarioEntity usuarioEntityDatabase = this.usuarioRepository.save(usuarioEntity);
 		this.cadastrarPerfilUsuario(usuarioEntity);
-		return UsuarioMapper.toTransferResponse(usuarioEntityDatabase);
+		return usuarioMapper.toTransferResponse(usuarioEntityDatabase);
 	}
 
 	private void cadastrarPerfilUsuario(UsuarioEntity usuarioEntity) {

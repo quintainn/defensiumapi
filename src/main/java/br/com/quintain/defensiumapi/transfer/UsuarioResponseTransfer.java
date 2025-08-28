@@ -12,6 +12,8 @@ public class UsuarioResponseTransfer {
 
 	private String active;
 
+    private String sistema;
+
     public UsuarioResponseTransfer() { }
 
     public String getCodePublic() {
@@ -52,6 +54,14 @@ public class UsuarioResponseTransfer {
 
     public void setActive(String active) {
         this.active = active;
+    }
+
+    public String getSistema() {
+        return sistema;
+    }
+
+    public void setSistema(String sistema) {
+        this.sistema = sistema;
     }
 
 }
