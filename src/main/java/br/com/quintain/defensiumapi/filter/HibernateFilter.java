@@ -25,19 +25,19 @@ public class HibernateFilter extends OncePerRequestFilter {
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest httpServletRequest,
-                                    HttpServletResponse httpServletResponse,
-                                    FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request,
+            HttpServletResponse response,
+            FilterChain filterChain) throws ServletException, IOException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.getPrincipal() instanceof Jwt jwt) {
             Long sistemaID = jwt.getClaim("sistemaID");
             if (sistemaID != null) {
-                entityManager.unwrap(Session.class)
-                        .enableFilter("sistemaFilter")
+                Session session = entityManager.unwrap(Session.class);
+                session.enableFilter("sistemaFilter")
                         .setParameter("id_sistema", sistemaID);
             }
         }
-        filterChain.doFilter(httpServletRequest, httpServletResponse);
+        filterChain.doFilter(request, response);
     }
 
 }

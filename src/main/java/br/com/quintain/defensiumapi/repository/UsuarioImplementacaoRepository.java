@@ -21,16 +21,21 @@ public class UsuarioImplementacaoRepository {
 
     @Transactional(readOnly = true)
     public List<UsuarioEntity> findAll() {
+        Session session = getRecuperarIdentificadorSistema();
+        return session.createSelectionQuery("""
+                    SELECT usuarioEntity
+                    FROM UsuarioEntity usuarioEntity
+                """, UsuarioEntity.class).getResultList();
+    }
+
+    private Session getRecuperarIdentificadorSistema() {
         Session session = entityManager.unwrap(Session.class);
         Long sistemaID = getSistemaIdDoUsuarioLogado();
         if (sistemaID != null) {
             session.enableFilter("sistemaFilter")
                     .setParameter("id_sistema", sistemaID);
         }
-        return session.createQuery("""
-                    SELECT usuarioEntity
-                    FROM UsuarioEntity usuarioEntity
-                """).getResultList();
+        return session;
     }
 
     private Long getSistemaIdDoUsuarioLogado() {
