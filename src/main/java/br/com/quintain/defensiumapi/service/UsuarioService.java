@@ -8,12 +8,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.quintain.defensiumapi.entity.PerfilEntity;
 import br.com.quintain.defensiumapi.entity.UsuarioEntity;
 import br.com.quintain.defensiumapi.entity.UsuarioPerfilEntity;
 import br.com.quintain.defensiumapi.mapper.UsuarioMapper;
 import br.com.quintain.defensiumapi.repository.PerfilRepository;
+import br.com.quintain.defensiumapi.repository.UsuarioImplementacaoRepository;
 import br.com.quintain.defensiumapi.repository.UsuarioPerfilRepository;
 import br.com.quintain.defensiumapi.repository.UsuarioRepository;
 import br.com.quintain.defensiumapi.transfer.UsuarioRequestTransfer;
@@ -32,19 +34,23 @@ public class UsuarioService implements UserDetailsService {
 
 	private final UsuarioMapper usuarioMapper;
 
+	private final UsuarioImplementacaoRepository usuarioImplementacaoRepository;
+
 	private static final Long PERFIL_USUARIO_CODE = 2L;
 
 	public UsuarioService(UsuarioRepository usuarioRepository, UsuarioPerfilRepository usuarioPerfilRepository,
-			PasswordEncoder passwordEncoder, PerfilRepository perfilRepository, UsuarioMapper usuarioMapper) {
+			PasswordEncoder passwordEncoder, PerfilRepository perfilRepository, UsuarioMapper usuarioMapper, 
+			UsuarioImplementacaoRepository usuarioImplementacaoRepository) {
 		this.usuarioRepository = usuarioRepository;
 		this.usuarioPerfilRepository = usuarioPerfilRepository;
 		this.passwordEncoder = passwordEncoder;
 		this.perfilRepository = perfilRepository;
 		this.usuarioMapper = usuarioMapper;
+		this.usuarioImplementacaoRepository = usuarioImplementacaoRepository;
 	}
 
 	public List<UsuarioEntity> findAll() {
-		return usuarioRepository.findAll();
+		return usuarioImplementacaoRepository.findAll();
 	}
 
 	public List<PerfilEntity> recuperarPerfilUsuario(Long code) {

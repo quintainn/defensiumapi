@@ -5,6 +5,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
+import org.hibernate.annotations.Filter;
+import org.hibernate.annotations.FilterDef;
+import org.hibernate.annotations.ParamDef;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,6 +27,11 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_usuario", schema = "public")
+@FilterDef(
+    name = "sistemaFilter",
+    parameters = @ParamDef(name = "id_sistema", type = Long.class)
+)
+@Filter(name = "sistemaFilter", condition = "id_sistema = :id_sistema")
 public class UsuarioEntity implements UserDetails {
 
 	@Id
@@ -34,7 +42,7 @@ public class UsuarioEntity implements UserDetails {
 	@Column(name = "code_public", updatable = false, nullable = false)
 	private UUID codePublic;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_sistema", nullable = false)
 	private SistemaEntity sistemaEntity;
 
