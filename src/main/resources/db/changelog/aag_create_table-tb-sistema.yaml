@@ -16,7 +16,6 @@ databaseChangeLog:
               - column:
                   name: CODE_PUBLIC
                   type: uuid
-                  defaultValueComputed: gen_random_uuid()
                   constraints:
                     nullable: false
                     unique: true

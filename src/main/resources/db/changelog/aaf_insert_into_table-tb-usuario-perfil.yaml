@@ -7,6 +7,9 @@ databaseChangeLog:
             tableName: TB_USUARIO_PERFIL
             columns:
               - column:
+                  name: CODE_PUBLIC
+                  value: "da6c5fa1-8d78-40e6-86ac-a15e4925d5d5"
+              - column:
                   name: ID_USUARIO
                   valueNumeric: 1
               - column:
@@ -18,6 +21,9 @@ databaseChangeLog:
         - insert:
             tableName: TB_USUARIO_PERFIL
             columns:
+              - column:
+                  name: CODE_PUBLIC
+                  value: "7b7fb719-c54f-4e54-9e82-91d7667f3a80"
               - column:
                   name: ID_USUARIO
                   valueNumeric: 1
