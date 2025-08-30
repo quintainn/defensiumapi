@@ -7,17 +7,26 @@ databaseChangeLog:
             tableName: TB_PERFIL
             columns:
               - column:
+                  name: CODE_PUBLIC
+                  value: "5f4aa926-bafe-4eae-aef6-19bb2359a30f"
+              - column:
                   name: DESCRICAO
                   value: "Administrador"
         - insert:
             tableName: TB_PERFIL
             columns:
               - column:
+                  name: CODE_PUBLIC
+                  value: "af08d016-cbae-4eb1-95c3-d31dc099b7d3"
+              - column:
                   name: DESCRICAO
                   value: "Usuário"
         - insert:
             tableName: TB_PERFIL
             columns:
+              - column:
+                  name: CODE_PUBLIC
+                  value: "16ab82b6-ff43-4932-a1c3-5273058fee46"
               - column:
                   name: DESCRICAO
                   value: "Sistema"

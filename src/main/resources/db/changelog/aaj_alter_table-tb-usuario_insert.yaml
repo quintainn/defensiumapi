@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: 10
+      author: Desenvolvimento
+      changes:
+        - update:
+            tableName: TB_USUARIO
+            columns:
+              - column:
+                  name: ID_SISTEMA
+                  valueNumeric: 1
+        - addNotNullConstraint:
+            tableName: TB_USUARIO
+            columnName: ID_SISTEMA
+            columnDataType: bigint

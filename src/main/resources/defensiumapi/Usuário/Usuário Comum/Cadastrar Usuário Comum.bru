@@ -1,0 +1,27 @@
+meta {
+  name: Cadastrar Usuário Comum
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://192.168.1.9:8081/defensium/usuario/comum
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJST0xFX1VTVcOBUklPIiwic2NvcGUiOiJST0xFX1VTVcOBUklPIiwic2lzdGVtYUlEIjoyLCJpc3MiOiJkZWZlbnNpdW0tc2VydmljZSIsImV4cCI6MTc1NjM0NzQ5MSwiaWF0IjoxNzU2MzQzODkxfQ.OSGRsFOGqP4AGJ0A0WGjknK5dst6a1BWCcV0YeNz5-VCvHBgztyWFYiGpQJMXDxEXqF5MWA-HIQuJfKZ54B-S1aXlJTiMw9EqE2_KtdTWMqtsi74AFArTqyLrbY9SlbCJieJ-yylDKaHrvGwJPgklQDuuXleq0eR_WzWrAOzt505XQtd2ud6qqoHhVnpwn_MkU3urUiqSdscDu3UqPW8Exs6hYfbN490IiNlqD_XswE7wkGE3iWoSorZDW_nZgUzO0pAmD-xMv0whFMSLQrVWOZD1_BoEadcb7nOcTlrd0t1KPVfAGdhweTl9gBCCNXzbP_fFjCwvHLOIQtoqOOkrg
+}
+
+body:json {
+  {
+    "nome": "Thereza das Graças Rodrigues",
+    "usuario": "thereza.rodrigues@hotmail.com.br",
+    "senha": "senha-forte"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

@@ -8,12 +8,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.quintain.defensiumapi.entity.PerfilEntity;
 import br.com.quintain.defensiumapi.entity.UsuarioEntity;
 import br.com.quintain.defensiumapi.entity.UsuarioPerfilEntity;
 import br.com.quintain.defensiumapi.mapper.UsuarioMapper;
 import br.com.quintain.defensiumapi.repository.PerfilRepository;
+import br.com.quintain.defensiumapi.repository.UsuarioImplementacaoRepository;
 import br.com.quintain.defensiumapi.repository.UsuarioPerfilRepository;
 import br.com.quintain.defensiumapi.repository.UsuarioRepository;
 import br.com.quintain.defensiumapi.transfer.UsuarioRequestTransfer;
@@ -22,7 +24,7 @@ import br.com.quintain.defensiumapi.transfer.UsuarioResponseTransfer;
 @Service
 public class UsuarioService implements UserDetailsService {
 
-	private UsuarioRepository usuarioRepository;
+	private final UsuarioRepository usuarioRepository;
 
 	private final UsuarioPerfilRepository usuarioPerfilRepository;
 
@@ -30,17 +32,25 @@ public class UsuarioService implements UserDetailsService {
 
 	private final PerfilRepository perfilRepository;
 
+	private final UsuarioMapper usuarioMapper;
+
+	private final UsuarioImplementacaoRepository usuarioImplementacaoRepository;
+
 	private static final Long PERFIL_USUARIO_CODE = 2L;
 
-	public UsuarioService(UsuarioRepository usuarioRepository, UsuarioPerfilRepository usuarioPerfilRepository, PasswordEncoder passwordEncoder, PerfilRepository perfilRepository) {
+	public UsuarioService(UsuarioRepository usuarioRepository, UsuarioPerfilRepository usuarioPerfilRepository,
+			PasswordEncoder passwordEncoder, PerfilRepository perfilRepository, UsuarioMapper usuarioMapper, 
+			UsuarioImplementacaoRepository usuarioImplementacaoRepository) {
 		this.usuarioRepository = usuarioRepository;
 		this.usuarioPerfilRepository = usuarioPerfilRepository;
 		this.passwordEncoder = passwordEncoder;
 		this.perfilRepository = perfilRepository;
+		this.usuarioMapper = usuarioMapper;
+		this.usuarioImplementacaoRepository = usuarioImplementacaoRepository;
 	}
 
 	public List<UsuarioEntity> findAll() {
-		return usuarioRepository.findAll();
+		return usuarioImplementacaoRepository.findAll();
 	}
 
 	public List<PerfilEntity> recuperarPerfilUsuario(Long code) {
@@ -60,12 +70,11 @@ public class UsuarioService implements UserDetailsService {
 		return usuarioEntityOptional.get();
 	}
 
-	public UsuarioResponseTransfer createOne(UsuarioRequestTransfer usuarioTransfer) {
-		UsuarioMapper usuarioMapper = new UsuarioMapper(passwordEncoder);
+	public UsuarioResponseTransfer cadastrarUsuarioSistema(UsuarioRequestTransfer usuarioTransfer) {
 		UsuarioEntity usuarioEntity = usuarioMapper.toEntity(usuarioTransfer);
 		UsuarioEntity usuarioEntityDatabase = this.usuarioRepository.save(usuarioEntity);
 		this.cadastrarPerfilUsuario(usuarioEntity);
-		return UsuarioMapper.toTransferResponse(usuarioEntityDatabase);
+		return usuarioMapper.toTransferResponse(usuarioEntityDatabase);
 	}
 
 	private void cadastrarPerfilUsuario(UsuarioEntity usuarioEntity) {
@@ -75,6 +84,10 @@ public class UsuarioService implements UserDetailsService {
 				usuarioPerfilEntity.setPerfilEntity(perfil);
 			this.usuarioPerfilRepository.save(usuarioPerfilEntity);
 		});
+	}
+
+	public UsuarioResponseTransfer cadastrarUsuarioComum(UsuarioRequestTransfer usuarioTransfer) {
+		return this.cadastrarUsuarioSistema(usuarioTransfer);
 	}
 
 }

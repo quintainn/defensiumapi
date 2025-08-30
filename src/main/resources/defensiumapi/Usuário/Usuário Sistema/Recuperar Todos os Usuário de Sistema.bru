@@ -1,0 +1,19 @@
+meta {
+  name: Recuperar Todos os Usuário de Sistema
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://127.0.0.1:8081/defensium/usuario
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJST0xFX0FETUlOSVNUUkFET1IgUk9MRV9TSVNURU1BIiwic2NvcGUiOiJST0xFX0FETUlOSVNUUkFET1IgUk9MRV9TSVNURU1BIiwic2lzdGVtYUlEIjoxLCJpc3MiOiJkZWZlbnNpdW0tc2VydmljZSIsImV4cCI6MTc1NjQxMzEzNSwiaWF0IjoxNzU2NDA5NTM1fQ.fGoplrExArUva-pAPb3HzNF3v9oSBug2ysFZdW6-KzX8mbcHehXEgtEv_KCziX3riO4I_eLBy6qifb1g7qYCcT0h7_Cg4gUviQLb9gcv4JFMObBZULmiA3RRKUD_zRRN8H5R3XIbhmCDtKoZQ4VdropGnbPMR16os35dJuE46o1kyo4WWGqOCkf8kMLwrVoH3M1Synz2uFw3SyQaW7Wcf95BLkdu7XijbGjzeV2ilp3aTrB-3XGGG1WEuW_fea1-cg8bT38agwh3cWfBtZLe9_vSMWZR2lxz5wG7kp5BxRfXKoTTVegFWzefqF1tDygxbt_LJzJn9A3-Sfy-rPlqRw
+}
+
+settings {
+  encodeUrl: true
+}

@@ -7,6 +7,9 @@ databaseChangeLog:
             tableName: TB_USUARIO
             columns:
               - column:
+                  name: CODE_PUBLIC
+                  value: "11a8a1dc-996e-4bb8-a131-b1a16e1ca10a"
+              - column:
                   name: NOME
                   value: "Defensium"
               - column:

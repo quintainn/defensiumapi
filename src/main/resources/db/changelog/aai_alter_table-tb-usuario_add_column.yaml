@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: 9
+      author: Desenvolvimento
+      changes:
+        - addColumn:
+            tableName: TB_USUARIO
+            columns:
+              - column:
+                  name: ID_SISTEMA
+                  type: bigint
+                  constraints:
+                    nullable: true
+        - addForeignKeyConstraint:
+            baseTableName: TB_USUARIO
+            baseColumnNames: ID_SISTEMA
+            referencedTableName: TB_SISTEMA
+            referencedColumnNames: CODE
+            constraintName: FK_USUARIO_SISTEMA

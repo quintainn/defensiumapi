@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: 1
+      id: 7
       author: Desenvolvimento
       changes:
         - createTable:
-            tableName: TB_PERFIL
+            tableName: TB_SISTEMA
             columns:
               - column:
                   name: CODE
@@ -20,8 +20,13 @@ databaseChangeLog:
                     nullable: false
                     unique: true
               - column:
-                  name: DESCRICAO
+                  name: NOME
                   type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: URL
+                  type: varchar(255)
                   constraints:
                     nullable: false
                     unique: true
@@ -33,12 +38,12 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: DATA_EDICAO
-                  type: date
+                  type: timestamp
                   constraints:
                     nullable: true
               - column:
                   name: DATA_DELECAO
-                  type: date
+                  type: timestamp
                   constraints:
                     nullable: true
               - column:

@@ -1,0 +1,31 @@
+meta {
+  name: Cadastrar Usuário do Sistema
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://192.168.1.9:8081/defensium/usuario/sistema
+  body: json
+  auth: basic
+}
+
+auth:basic {
+  username: defensium.desenvolvimento
+  password: defensium
+}
+
+body:json {
+  {
+    "nome": "Credentium",
+    "sistemaEntity": {
+      "code": 2
+    },
+    "usuario": "credentium.desenvolvimento",
+    "senha": "credentium"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

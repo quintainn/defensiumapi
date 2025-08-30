@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: 8
+      author: Desenvolvimento
+      changes:
+        - insert:
+            tableName: TB_SISTEMA
+            columns:
+              - column:
+                  name: CODE_PUBLIC
+                  value: "83d414db-93e7-4838-98df-c5669a1989d7"
+              - column:
+                  name: NOME
+                  value: "Defensium"
+              - column:
+                  name: URL
+                  value: "http://www.defensium.com.br"
